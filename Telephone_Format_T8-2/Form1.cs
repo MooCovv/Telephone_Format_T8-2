@@ -10,11 +10,39 @@ using System.Windows.Forms;
 
 namespace Telephone_Format_T8_2
 {
-    public partial class Form1 : Form
+    public partial class v : Form
     {
-        public Form1()
+        public v()
         {
             InitializeComponent();
+        }
+
+        private bool IsValidNumber(string i)
+        {
+            const int VALID_LENGTH = 10;
+            bool valid = true;
+
+            if(i.Length == VALID_LENGTH)
+            {
+                foreach (char ch in i)
+                {
+                    if (!char.IsDigit(ch))
+                    {
+                        valid = false;
+                    }
+                }
+            }
+            else
+            {
+                valid = false;
+            }
+            return valid;
+        }
+
+        private void 
+        private void formatButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
