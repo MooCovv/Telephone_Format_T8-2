@@ -17,14 +17,14 @@ namespace Telephone_Format_T8_2
             InitializeComponent();
         }
 
-        private bool IsValidNumber(string i)
+        private bool IsValidNumber(string str)
         {
             const int VALID_LENGTH = 10;
             bool valid = true;
 
-            if(i.Length == VALID_LENGTH)
+            if(str.Length == VALID_LENGTH)
             {
-                foreach (char ch in i)
+                foreach (char ch in str)
                 {
                     if (!char.IsDigit(ch))
                     {
@@ -39,10 +39,32 @@ namespace Telephone_Format_T8_2
             return valid;
         }
 
-        private void 
+        private void TelephoneFormat(ref string str)
+        {
+            str = str.Insert(0, "(");
+            str = str.Insert(4, ")");
+            str = str.Insert(8, "-");
+        }
+
+
         private void formatButton_Click(object sender, EventArgs e)
         {
+            string input = numberTextBox.Text.Trim();
 
+            if (IsValidNumber(input))
+            {
+                TelephoneFormat(ref input);
+                MessageBox.Show(input);    
+            }
+            else
+            {
+                MessageBox.Show("Invalid input");
+            }
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
